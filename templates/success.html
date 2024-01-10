@@ -4,11 +4,15 @@
    </head> 
    <body> 
       <p>File uploaded successfully</p> 
-      <p>File Name: {{name}}</p> 
+      <p>File Name: {{ video.title }}</p> 
    </body> 
    <video width="320" height="240" controls>
       <source src="{{ video.video_path }}" type="video/mp4">
       Your browser does not support the video tag.
   </video>
-  <p>{{ video.title }}</p>
+  <a href="{{ url_for('view', file=video.title) }}" download>
+   <button>Download Video (Debug: {{ url_for('view', file=video.title) }})</button>
+  </a>
+   
+  </form>
 </html>
