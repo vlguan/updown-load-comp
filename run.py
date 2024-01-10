@@ -1,9 +1,11 @@
 from fileinput import filename
 from flask import *
 import os
+from flaskr.api.tts import tts_blueprint
 from flaskr.model import Video
 app = Flask(__name__, template_folder='./templates')
 upload_folder = 'tempVid'
+app.register_blueprint(tts_blueprint)
 @app.route('/')
 def main():
     return render_template("index.html")
@@ -21,5 +23,8 @@ def view(file):
     if request.method == 'GET':
         # f = request.args.get('file')
         return send_file(os.path.join(upload_folder, file), as_attachment=True)
+@app.route('/tts', methods=['GET'])
+def tts():
+    return render_template('tts.html')
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=5001,debug=True)
