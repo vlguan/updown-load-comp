@@ -1,5 +1,21 @@
 from moviepy.editor import *
 '''
+purpose return a sped up clip giving speed_up value
+video: the videoclip obj from moviepy
+speedup: value at which to speedup by, ie 1.25 = 1.25 the speed of video
+'''
+def speed_up(video,speedup):
+   return video.fx(vfx.speedx, speedup)
+'''
+purpose is to return a subclip given the duration(tuple)
+params:
+video: the videoclip obj from moviepy
+duration: tuple of timestamps (start, finish)
+'''
+def create_subclip(video, duration):
+   start, finish = duration
+   return video.subclip(start,finish)
+'''
 purpose is to stitch videos together
 params:
 videoArray: an array of videos you want to attach together, must be an even number of videos

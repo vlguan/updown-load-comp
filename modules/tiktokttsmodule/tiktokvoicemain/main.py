@@ -5,7 +5,7 @@ from .constants import voices
 
 # https://twitter.com/scanlime/status/1512598559769702406
 
-def tts(session_id: str, text_speaker: str = "en_us_002", req_text: str = "TikTok Text To Speech", filename: str = 'temp_audio.mp3', play: bool = False):
+def tts(session_id: str, text_speaker: str = "en_us_002", req_text: str = "TikTok Text To Speech", filename: str = 'tempAud/temp_audio.mp3', play: bool = False):
     req_text = req_text.replace("+", "plus")
     req_text = req_text.replace(" ", "+")
     req_text = req_text.replace("&", "and")
@@ -35,7 +35,7 @@ def tts(session_id: str, text_speaker: str = "en_us_002", req_text: str = "TikTo
     with open(filename, "wb") as out:
         out.write(b64d)
 # converts to moviepy AudioClip object
-    audio_clipObj = AudioFileClip('temp_audio.mp3')
+    audio_clipObj = AudioFileClip('tempAud/temp_audio.mp3')
 
     output_data = {
         "status": msg.capitalize(),
