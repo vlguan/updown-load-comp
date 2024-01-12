@@ -8,7 +8,10 @@ upload_folder = 'tempVid'
 app.register_blueprint(tts_blueprint)
 @app.route('/')
 def main():
-    return render_template("index.html")
+    return render_template("home.html")
+@app.route('/upload')
+def upload():
+    return render_template('index.html')
 @app.route('/success', methods = ['POST', 'GET'])
 def success():
     # upload_path = app.config['UPLOAD_FOLDER']
